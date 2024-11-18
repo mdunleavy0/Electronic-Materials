@@ -6,6 +6,8 @@
 
 const int thermistorPin = A0;
 const int lm35Pin = A1;
+const int pwrPin = A2;
+const int gndPin = A3;
 
 const int ioMax = 1023;
 const float refV = 3.3;
@@ -27,10 +29,15 @@ void setup() {
     "Thermistor_Temperature_(C),"
     "LM35_Temperature_(C)"
   );
+
+  pinMode(pwrPin, OUTPUT);
+  pinMode(gndPin, OUTPUT);
+  digitalWrite(pwrPin, HIGH);
+  digitalWrite(gndPin, LOW);
   
   display = Adafruit_7segment();
   display.begin(0x70);
-  //display.setBrightness(15);
+  display.setBrightness(15);
 }
 
 
